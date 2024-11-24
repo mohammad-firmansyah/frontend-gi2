@@ -309,8 +309,29 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative ;
 }
 
+.turbin{
+    position: absolute;
+    width: 100px;
+    top: -50px;
+    right: 100px;
+}
+
+.butterfly{
+    position: absolute;
+    width: 50px;
+    top: 50px;
+    left: 10px;
+}
+
+.leafBlog{
+    position: absolute;
+    width: 100px !important;
+    bottom: 10  0px !important;
+    left: 0px;
+}
 .blogs-content{
     display: flex;
     justify-content: center;
@@ -324,6 +345,7 @@ body{
     background-color: #55B76B;
     box-sizing: border-box;
     padding: 10px;
+    position: relative;
 }
 
 @media screen and (min-width:900px){
@@ -561,6 +583,28 @@ body{
     .card{
         width: 80%;
     }
+
+    
+.turbin{
+    position: absolute;
+    width: 100px;
+    top: -50px;
+    right: 100px;
+}
+
+.butterfly{
+    position: absolute;
+    width: 50px;
+    top: 50px;
+    left: 10px !important;
+}
+
+.leafBlog{
+    position: absolute;
+    width: 100px !important;
+    bottom: 100px !important;
+    left: 0px;
+}
 }
 
 @media screen and (min-width:425px) {

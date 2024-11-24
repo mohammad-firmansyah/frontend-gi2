@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 
@@ -36,6 +37,8 @@ const Container = styled.div`
 `
 
 export const BlogCard = ({hero, title, desc, url})=>{
+    const navigate = useNavigate();
+
     return(
         <Container>
 
@@ -46,7 +49,9 @@ export const BlogCard = ({hero, title, desc, url})=>{
             <div className="card-content">
                 <h2 className="title">{title}</h2>
                 <p className="desc">{desc}</p>
-                <button className="cta">Read More</button>
+                <button className="cta" onClick={()=>{
+                    navigate("blog/"+url)
+                }}>Read More</button>
             </div>
         </div>
         </Container>

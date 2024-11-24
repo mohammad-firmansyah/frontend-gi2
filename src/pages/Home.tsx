@@ -10,9 +10,11 @@ import Recycle from "../assets/recycle.svg";
 import Leaf from "../assets/leaft-green-two.svg";
 import LeafLight from "../assets/leaf-light.svg";
 import Lamp from "../assets/light.svg";
+import leafBlog from "../assets/leaf.svg";
 import ecorouteLogo from "../assets/ecoroute-white.png";
 import preview from "../assets/ss-ecoroute.png";
-import DummyHero from "../assets/blog-dummy-hero.png";
+import turbin from "../assets/turbine.svg"
+import butterfly from "../assets/butterfly-white.svg"
 import { useEffect, useState } from "react";
 import { CardReview } from "../components/home/CardReview";
 import { ProductCard } from "../components/home/ProductCard";
@@ -58,13 +60,18 @@ const reviewer = [
         review:"Aplikasi ini membuat saya lebih sadar akan emisi karbon sekaligus membantu saya memilih rute yang lebih ramah lingkungan. Sekarang, Eco Route jadi andalan saya setiap kali bepergian!"
     },
 ]
+
 export const Home = () => {
     const [active,setActive] = useState(false)
     const {blogs,loading,error,refetch} = useGetAllBlogs()
-
+    const [localBlogs,setLocalBlogs] = useState([])
     useEffect(() => {
         refetch();
-    }, []);
+        if(blogs.length > 3){
+            let newBlogs = blogs.slice(0,3)
+            setLocalBlogs(newBlogs)
+        }
+        }, []);
     
     return (
         <>
@@ -231,26 +238,18 @@ your purchases.
             <section id="blogs" className="bg-main">
                 <h2 className="page-title white">Blogs</h2>
                 <div className="blogs-container">
-                    {/* <div className="product-nav">
-                        <img src={ArrowBack} alt="arrow back" />
-                        <img src={ArrowBack} alt="arrow back" />
-                    </div> */}
                     <div className="blogs-content">
-                        {blogs.map((item,index)=>{
-                            return <BlogCard key={index} title={item.title} desc={item.description} hero={item.hero_image}></BlogCard>
+
+                        {blogs.slice(0,3).map((item,index)=>{
+                            return <BlogCard key={index} title={item.title} desc={item.description} hero={item.hero_image} url={item.id}></BlogCard>
                         })}
-{/*                         
-                        <BlogCard title={"title"} desc={"desc dsajdhjshajd dsjhdjahsd dsdjhasjdhj"}
-                        hero={DummyHero}
-                        ></BlogCard>
-                        <BlogCard title={"title"} desc={"desc dsajdhjshajd dsjhdjahsd dsdjhasjdhj"}
-                        hero={DummyHero}
-                        ></BlogCard>
-                        <BlogCard title={"title"} desc={"desc dsajdhjshajd dsjhdjahsd dsdjhasjdhj"}
-                        hero={DummyHero}
-                        ></BlogCard> */}
                     </div>
+
+                    
                 </div>
+                <img src={turbin} alt="" className="turbin" />
+                <img src={butterfly} alt="" className="butterfly" />
+                <img src={leafBlog} alt="" className="leafBlog" />
             </section>
             <Footer></Footer>
         </>

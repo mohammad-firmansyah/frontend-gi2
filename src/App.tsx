@@ -13,6 +13,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { globalState } from './state/global/global.atom';
 import { useRecoilState } from 'recoil';
 import { NotFound } from './pages/NotFound';
+import { AllBlogs } from './pages/AllBlogs';
 
 function App() {
 
@@ -27,6 +28,10 @@ function App() {
             },
             {
                 path:'/blogs',
+                element: <AllBlogs />
+            },
+            {
+                path:'/blog/:id',
                 element: <Blog />
             },
             {
