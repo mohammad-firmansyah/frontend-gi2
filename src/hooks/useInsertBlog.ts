@@ -3,12 +3,14 @@ import { useRecoilState } from "recoil";
 import { globalState } from "../state/global/global.atom";
 import { upload } from "../common/upload";
 import { getRandomString } from "../common/utils";
+import { userAtom } from "../state/user/user.atom";
 
 export const useInsertBlog = ()=>{
     const [token,setToken] = useState(null)
     const [global,setGlobal] = useRecoilState(globalState);
     const [loading, setLoading] = useState(null)
     const [error, setError] = useState(null)
+    const [user,setUser] = useRecoilState(userAtom)
 
     
     const insertBlog = async (body,callback) => {
@@ -19,6 +21,7 @@ export const useInsertBlog = ()=>{
                 const url = await upload(getRandomString(10)+".png",body.hero_image)
                 
                 body.hero_image = url
+                body.user_id = user.id
 
                 const response =await fetch(`${import.meta.env.VITE_BASE_URL}/api/blogs`,{
                     method: 'POST',

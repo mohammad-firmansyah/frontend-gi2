@@ -19,7 +19,7 @@ function App() {
 
   const [global, setGlobal] = useRecoilState(globalState);
 
-    const router = createBrowserRouter(
+    const router = createBrowserRouter( 
         [
             {
                 path:'/',

@@ -4,24 +4,28 @@ import { useNavigate } from "react-router-dom";
 const Container = styled.div`
 
     .card{
-        padding:10px;
         background:white;
         border-radius:20px;
         display:flex;
         flex-direction:column;
         box-sizing:border-box;
         text-align:center;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
     .card-hero img{
         width:100%;
-        border-radius:20px;
+        border-radius:15px;
     }
     
     .card-content{
+        padding:0 20px 20px 20px;
         font-family: "Lato", sans-serif;
     }
 
+    .title{
+        font-size:16px;
+    }
     .cta{
         padding: 10px 20px;
         border:0;
@@ -32,8 +36,9 @@ const Container = styled.div`
         color:white;
         }
     .desc{
-        font-size:16px  ;
+        font-size:12px  ;
     }
+
 `
 
 export const BlogCard = ({hero, title, desc, url})=>{
@@ -44,7 +49,7 @@ export const BlogCard = ({hero, title, desc, url})=>{
 
         <div className="card">
             <div className="card-hero">
-                <img src={hero} alt={title} />
+                <img src={hero} alt={title}/>
             </div>
             <div className="card-content">
                 <h2 className="title">{title}</h2>

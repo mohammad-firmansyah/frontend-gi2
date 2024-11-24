@@ -21,6 +21,8 @@ import { ProductCard } from "../components/home/ProductCard";
 import { BlogCard } from "../components/home/BlogCard";
 import Footer from "../components/footer/Footer";
 import { useGetAllBlogs } from '../hooks/useGetAllBlogs';
+import { Button } from '@mui/joy';
+import { useNavigate } from 'react-router-dom';
 
 const reviewer = [
     {
@@ -65,6 +67,8 @@ export const Home = () => {
     const [active,setActive] = useState(false)
     const {blogs,loading,error,refetch} = useGetAllBlogs()
     const [localBlogs,setLocalBlogs] = useState([])
+    const navigate = useNavigate();
+
     useEffect(() => {
         refetch();
         if(blogs.length > 3){
@@ -87,8 +91,8 @@ export const Home = () => {
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#product">Product</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#blogs">Blog</a></li>
+                        <li><a href="#footer">Contact Us</a></li>
                     </ul>
                 </nav>
             
@@ -243,7 +247,24 @@ your purchases.
                         {blogs.slice(0,3).map((item,index)=>{
                             return <BlogCard key={index} title={item.title} desc={item.description} hero={item.hero_image} url={item.id}></BlogCard>
                         })}
+
                     </div>
+                        <Button onClick={()=>{
+                            navigate("/blogs")
+                        }}sx={
+                            {
+                                background:"transparent",
+                                color:"white",
+                                borderColor:"white",
+                                border:"1px solid white",
+                                margin:"20px auto",
+                                display:"block",
+                                "&:hover":{
+                                    background:"white",
+                                    color:"black"
+                                }
+                            }
+                        }>All Blogs</Button>
 
                     
                 </div>
@@ -251,7 +272,11 @@ your purchases.
                 <img src={butterfly} alt="" className="butterfly" />
                 <img src={leafBlog} alt="" className="leafBlog" />
             </section>
+
+            <section id='footer'>
+
             <Footer></Footer>
+            </section>
         </>
     )
 } 
